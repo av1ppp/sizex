@@ -56,20 +56,24 @@ func (self Size) EiB() float64 {
 	return float64(self) / float64(EiB)
 }
 
+const floatFmt = 'g'
+const floatPrec = 3
+const floatBitSize = 64
+
 func (self Size) String() string {
 	switch {
 	case self >= EiB:
-		return strconv.FormatFloat(self.EiB(), 'f', -1, 64) + " " + strEiB
+		return strconv.FormatFloat(self.EiB(), floatFmt, floatPrec, floatBitSize) + " " + strEiB
 	case self >= PiB:
-		return strconv.FormatFloat(self.PiB(), 'f', -1, 64) + " " + strPiB
+		return strconv.FormatFloat(self.PiB(), floatFmt, floatPrec, floatBitSize) + " " + strPiB
 	case self >= TiB:
-		return strconv.FormatFloat(self.TiB(), 'f', -1, 64) + " " + strTiB
+		return strconv.FormatFloat(self.TiB(), floatFmt, floatPrec, floatBitSize) + " " + strTiB
 	case self >= GiB:
-		return strconv.FormatFloat(self.GiB(), 'f', -1, 64) + " " + strGiB
+		return strconv.FormatFloat(self.GiB(), floatFmt, floatPrec, floatBitSize) + " " + strGiB
 	case self >= MiB:
-		return strconv.FormatFloat(self.MiB(), 'f', -1, 64) + " " + strMiB
+		return strconv.FormatFloat(self.MiB(), floatFmt, floatPrec, floatBitSize) + " " + strMiB
 	case self >= KiB:
-		return strconv.FormatFloat(self.KiB(), 'f', -1, 64) + " " + strKiB
+		return strconv.FormatFloat(self.KiB(), floatFmt, floatPrec, floatBitSize) + " " + strKiB
 	default:
 		return strconv.FormatInt(int64(self), 10) + " B"
 	}
